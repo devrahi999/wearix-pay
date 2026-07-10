@@ -10,6 +10,14 @@
       "dest": "/api/vercel-install.php"
     },
     {
+      "src": "/",
+      "dest": "/api/index.php?page="
+    },
+    {
+      "src": "/index.php",
+      "dest": "/api/index.php?page="
+    },
+    {
       "handle": "filesystem"
     },
     {
