@@ -229,23 +229,7 @@ private string $base_url;
      */
     public static function errorLog($data)
     {
-        if (!file_exists('logs/nagadApi') && !mkdir('logs', 0775) && !is_dir('logs')) {
-            throw new RuntimeException(sprintf('Directory "%s" was not created', 'logs'));
-        }
-
-        $errorLogFile = 'logs/nagadApi/error.log';
-        if (!file_exists($errorLogFile)) {
-
-            $logFile = "logs/error.log";
-            $fh = fopen($logFile, 'w+') or die("can't open file");
-            fclose($fh);
-            chmod($logFile, 0755);
-        }
-        $date = '=====================' . date('Y-m-d H:i:s') . '=============================================\n';
-        file_put_contents($errorLogFile, print_r($date, true), FILE_APPEND);
-        file_put_contents($errorLogFile, PHP_EOL . print_r($data, true), FILE_APPEND);
-        $string = '=====================' . date('Y-m-d H:i:s') . '=============================================' . PHP_EOL;
-        file_put_contents($errorLogFile, print_r($string, true), FILE_APPEND);
+        error_log(print_r($data, true));
     }
 
     /**
