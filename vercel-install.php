@@ -1,4 +1,5 @@
 <?php
+define('PipraPay_INIT', true);
 date_default_timezone_set('UTC');
 
 require __DIR__ . '/pp-config.php';
