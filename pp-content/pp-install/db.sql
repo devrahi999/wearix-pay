@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `pp_addon` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL PRIMARY KEY,
   `addon_id` varchar(15) NOT NULL,
   `slug` varchar(40) NOT NULL DEFAULT '--',
   `name` text NULL,
@@ -44,7 +44,7 @@ CREATE TABLE `pp_addon` (
 --
 
 CREATE TABLE `pp_addon_parameter` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL PRIMARY KEY,
   `addon_id` varchar(15) NOT NULL,
   `option_name` varchar(50) NOT NULL,
   `value` text NOT NULL,
@@ -59,7 +59,7 @@ CREATE TABLE `pp_addon_parameter` (
 --
 
 CREATE TABLE `pp_admin` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL PRIMARY KEY,
   `a_id` varchar(15) NOT NULL,
   `full_name` text NOT NULL,
   `username` varchar(50) NOT NULL,
@@ -82,7 +82,7 @@ CREATE TABLE `pp_admin` (
 --
 
 CREATE TABLE `pp_api` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL PRIMARY KEY,
   `brand_id` varchar(15) NOT NULL,
   `name` text NOT NULL,
   `api_key` varchar(60) NOT NULL,
@@ -100,7 +100,7 @@ CREATE TABLE `pp_api` (
 --
 
 CREATE TABLE `pp_balance_verification` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL PRIMARY KEY,
   `device_id` varchar(15) NOT NULL,
   `sender_key` varchar(15) NOT NULL,
   `type` enum('Personal','Agent','Merchant') NOT NULL DEFAULT 'Personal',
@@ -118,7 +118,7 @@ CREATE TABLE `pp_balance_verification` (
 --
 
 CREATE TABLE `pp_brands` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL PRIMARY KEY,
   `brand_id` varchar(15) NOT NULL,
   `favicon` text NULL,
   `logo` text NULL,
@@ -152,7 +152,7 @@ CREATE TABLE `pp_brands` (
 --
 
 CREATE TABLE `pp_browser_log` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL PRIMARY KEY,
   `a_id` varchar(15) NOT NULL,
   `cookie` varchar(40) NOT NULL,
   `browser` varchar(10) NOT NULL,
@@ -170,7 +170,7 @@ CREATE TABLE `pp_browser_log` (
 --
 
 CREATE TABLE `pp_currency` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL PRIMARY KEY,
   `brand_id` varchar(15) NOT NULL,
   `code` varchar(6) NOT NULL,
   `symbol` varchar(5) NOT NULL,
@@ -186,7 +186,7 @@ CREATE TABLE `pp_currency` (
 --
 
 CREATE TABLE `pp_customer` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL PRIMARY KEY,
   `ref` varchar(15) NOT NULL,
   `brand_id` varchar(15) NOT NULL,
   `name` text NOT NULL,
@@ -206,7 +206,7 @@ CREATE TABLE `pp_customer` (
 --
 
 CREATE TABLE `pp_device` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL PRIMARY KEY,
   `d_id` varchar(40) NOT NULL,
   `device_id` varchar(15) NOT NULL,
   `otp` varchar(15) NOT NULL,
@@ -227,7 +227,7 @@ CREATE TABLE `pp_device` (
 --
 
 CREATE TABLE `pp_domain` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL PRIMARY KEY,
   `domain` varchar(50) NOT NULL,
   `status` enum('active','inactive') NOT NULL DEFAULT 'active',
   `created_date` varchar(20) NOT NULL,
@@ -241,7 +241,7 @@ CREATE TABLE `pp_domain` (
 --
 
 CREATE TABLE `pp_env` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL PRIMARY KEY,
   `brand_id` varchar(15) NOT NULL DEFAULT 'both',
   `option_name` varchar(50) NOT NULL,
   `value` text NOT NULL,
@@ -256,7 +256,7 @@ CREATE TABLE `pp_env` (
 --
 
 CREATE TABLE `pp_faq` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL PRIMARY KEY,
   `brand_id` varchar(15) NOT NULL,
   `title` text NOT NULL,
   `description` text NOT NULL,
@@ -272,7 +272,7 @@ CREATE TABLE `pp_faq` (
 --
 
 CREATE TABLE `pp_gateways` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL PRIMARY KEY,
   `gateway_id` varchar(15) NOT NULL,
   `brand_id` varchar(15) NOT NULL,
   `slug` varchar(40) NOT NULL DEFAULT '--',
@@ -303,7 +303,7 @@ CREATE TABLE `pp_gateways` (
 --
 
 CREATE TABLE `pp_gateways_parameter` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL PRIMARY KEY,
   `brand_id` varchar(15) NOT NULL,
   `gateway_id` varchar(15) NOT NULL,
   `option_name` varchar(50) NOT NULL,
@@ -319,7 +319,7 @@ CREATE TABLE `pp_gateways_parameter` (
 --
 
 CREATE TABLE `pp_invoice` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL PRIMARY KEY,
   `ref` varchar(30) NOT NULL,
   `brand_id` varchar(15) NOT NULL,
   `customer_info` text NULL,
@@ -341,7 +341,7 @@ CREATE TABLE `pp_invoice` (
 --
 
 CREATE TABLE `pp_invoice_items` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL PRIMARY KEY,
   `brand_id` varchar(15) NOT NULL,
   `invoice_id` varchar(30) NOT NULL,
   `description` text NULL,
@@ -360,7 +360,7 @@ CREATE TABLE `pp_invoice_items` (
 --
 
 CREATE TABLE `pp_payment_link` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL PRIMARY KEY,
   `ref` varchar(30) NOT NULL,
   `brand_id` varchar(15) NOT NULL,
   `product_info` text NOT NULL,
@@ -380,7 +380,7 @@ CREATE TABLE `pp_payment_link` (
 --
 
 CREATE TABLE `pp_payment_link_field` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL PRIMARY KEY,
   `paymentLinkID` varchar(30) NOT NULL,
   `formType` text NOT NULL,
   `fieldName` text NOT NULL,
@@ -397,7 +397,7 @@ CREATE TABLE `pp_payment_link_field` (
 --
 
 CREATE TABLE `pp_permission` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL PRIMARY KEY,
   `brand_id` varchar(15) NOT NULL,
   `a_id` varchar(15) NOT NULL,
   `permission` text NOT NULL,
@@ -413,7 +413,7 @@ CREATE TABLE `pp_permission` (
 --
 
 CREATE TABLE `pp_sms_data` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL PRIMARY KEY,
   `source` enum('app','web') NOT NULL DEFAULT 'web',
   `device_id` varchar(15) NOT NULL,
   `sender` varchar(15) NOT NULL DEFAULT '--',
@@ -441,7 +441,7 @@ CREATE TABLE `pp_sms_data` (
 --
 
 CREATE TABLE `pp_transaction` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL PRIMARY KEY,
   `brand_id` varchar(15) NOT NULL,
   `source` enum('invoice','payment-link','payment-link-default','api') NOT NULL DEFAULT 'api',
   `ref` varchar(30) NOT NULL,
@@ -474,7 +474,7 @@ CREATE TABLE `pp_transaction` (
 --
 
 CREATE TABLE `pp_webhook_log` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL PRIMARY KEY,
   `ref` varchar(15) NOT NULL,
   `brand_id` varchar(15) NOT NULL,
   `payload` text NOT NULL,
@@ -495,21 +495,18 @@ CREATE TABLE `pp_webhook_log` (
 -- Indexes for table `pp_addon`
 --
 ALTER TABLE `pp_addon`
-  ADD PRIMARY KEY (`id`),
   ADD KEY `addon_id` (`addon_id`,`status`,`created_date`,`updated_date`);
 
 --
 -- Indexes for table `pp_addon_parameter`
 --
 ALTER TABLE `pp_addon_parameter`
-  ADD PRIMARY KEY (`id`),
   ADD KEY `addon_id` (`addon_id`,`option_name`,`created_date`,`updated_date`);
 
 --
 -- Indexes for table `pp_admin`
 --
 ALTER TABLE `pp_admin`
-  ADD PRIMARY KEY (`id`),
   ADD KEY `a_id` (`a_id`,`email`),
   ADD KEY `username` (`username`),
   ADD KEY `created_date` (`created_date`,`updated_date`);
@@ -518,14 +515,12 @@ ALTER TABLE `pp_admin`
 -- Indexes for table `pp_api`
 --
 ALTER TABLE `pp_api`
-  ADD PRIMARY KEY (`id`),
   ADD KEY `brand_id` (`brand_id`,`api_key`,`created_date`,`updated_date`);
 
 --
 -- Indexes for table `pp_balance_verification`
 --
 ALTER TABLE `pp_balance_verification`
-  ADD PRIMARY KEY (`id`),
   ADD KEY `device_id` (`device_id`,`sender_key`,`type`,`created_date`,`updated_date`),
   ADD KEY `simslot` (`simslot`),
   ADD KEY `status` (`status`);
@@ -534,7 +529,6 @@ ALTER TABLE `pp_balance_verification`
 -- Indexes for table `pp_brands`
 --
 ALTER TABLE `pp_brands`
-  ADD PRIMARY KEY (`id`),
   ADD KEY `brand_id` (`brand_id`),
   ADD KEY `created_date` (`created_date`,`updated_date`),
   ADD KEY `identify_name` (`identify_name`),
@@ -544,7 +538,6 @@ ALTER TABLE `pp_brands`
 -- Indexes for table `pp_browser_log`
 --
 ALTER TABLE `pp_browser_log`
-  ADD PRIMARY KEY (`id`),
   ADD KEY `a_id` (`a_id`,`cookie`,`created_date`,`updated_date`),
   ADD KEY `created_date` (`created_date`),
   ADD KEY `status` (`status`);
@@ -553,14 +546,12 @@ ALTER TABLE `pp_browser_log`
 -- Indexes for table `pp_currency`
 --
 ALTER TABLE `pp_currency`
-  ADD PRIMARY KEY (`id`),
   ADD KEY `brand_id` (`brand_id`,`code`,`symbol`);
 
 --
 -- Indexes for table `pp_customer`
 --
 ALTER TABLE `pp_customer`
-  ADD PRIMARY KEY (`id`),
   ADD KEY `ref` (`ref`,`brand_id`,`email`,`mobile`),
   ADD KEY `created_date` (`created_date`,`updated_date`),
   ADD KEY `status` (`status`,`inserted_via`);
@@ -569,7 +560,6 @@ ALTER TABLE `pp_customer`
 -- Indexes for table `pp_device`
 --
 ALTER TABLE `pp_device`
-  ADD PRIMARY KEY (`id`),
   ADD KEY `device_id` (`device_id`),
   ADD KEY `created_date` (`created_date`,`updated_date`),
   ADD KEY `a_id` (`d_id`),
@@ -580,7 +570,6 @@ ALTER TABLE `pp_device`
 -- Indexes for table `pp_domain`
 --
 ALTER TABLE `pp_domain`
-  ADD PRIMARY KEY (`id`),
   ADD KEY `domain` (`domain`),
   ADD KEY `created_date` (`created_date`,`updated_date`),
   ADD KEY `status` (`status`);
@@ -589,7 +578,6 @@ ALTER TABLE `pp_domain`
 -- Indexes for table `pp_env`
 --
 ALTER TABLE `pp_env`
-  ADD PRIMARY KEY (`id`),
   ADD KEY `option_name` (`option_name`),
   ADD KEY `brand_id` (`brand_id`),
   ADD KEY `created_date` (`created_date`,`updated_date`);
@@ -598,7 +586,6 @@ ALTER TABLE `pp_env`
 -- Indexes for table `pp_faq`
 --
 ALTER TABLE `pp_faq`
-  ADD PRIMARY KEY (`id`),
   ADD KEY `brand_id` (`brand_id`,`created_date`,`updated_date`),
   ADD KEY `status` (`status`);
 
@@ -606,7 +593,6 @@ ALTER TABLE `pp_faq`
 -- Indexes for table `pp_gateways`
 --
 ALTER TABLE `pp_gateways`
-  ADD PRIMARY KEY (`id`),
   ADD KEY `brand_id` (`brand_id`,`slug`),
   ADD KEY `g_id` (`gateway_id`),
   ADD KEY `created_date` (`created_date`,`updated_date`),
@@ -617,7 +603,6 @@ ALTER TABLE `pp_gateways`
 -- Indexes for table `pp_gateways_parameter`
 --
 ALTER TABLE `pp_gateways_parameter`
-  ADD PRIMARY KEY (`id`),
   ADD KEY `slug` (`gateway_id`,`option_name`),
   ADD KEY `brand_id` (`brand_id`),
   ADD KEY `created_date` (`created_date`,`updated_date`);
@@ -626,7 +611,6 @@ ALTER TABLE `pp_gateways_parameter`
 -- Indexes for table `pp_invoice`
 --
 ALTER TABLE `pp_invoice`
-  ADD PRIMARY KEY (`id`),
   ADD KEY `ref` (`ref`,`brand_id`),
   ADD KEY `created_date` (`created_date`,`updated_date`),
   ADD KEY `status` (`status`);
@@ -635,7 +619,6 @@ ALTER TABLE `pp_invoice`
 -- Indexes for table `pp_invoice_items`
 --
 ALTER TABLE `pp_invoice_items`
-  ADD PRIMARY KEY (`id`),
   ADD KEY `invoice_id` (`invoice_id`),
   ADD KEY `brand_id` (`brand_id`),
   ADD KEY `created_date` (`created_date`,`updated_date`);
@@ -644,7 +627,6 @@ ALTER TABLE `pp_invoice_items`
 -- Indexes for table `pp_payment_link`
 --
 ALTER TABLE `pp_payment_link`
-  ADD PRIMARY KEY (`id`),
   ADD KEY `ref` (`ref`,`brand_id`,`created_date`,`updated_date`),
   ADD KEY `status` (`status`);
 
@@ -652,21 +634,18 @@ ALTER TABLE `pp_payment_link`
 -- Indexes for table `pp_payment_link_field`
 --
 ALTER TABLE `pp_payment_link_field`
-  ADD PRIMARY KEY (`id`),
   ADD KEY `paymentLinkID` (`paymentLinkID`);
 
 --
 -- Indexes for table `pp_permission`
 --
 ALTER TABLE `pp_permission`
-  ADD PRIMARY KEY (`id`),
   ADD KEY `brand_id` (`brand_id`,`a_id`,`created_date`,`updated_date`);
 
 --
 -- Indexes for table `pp_sms_data`
 --
 ALTER TABLE `pp_sms_data`
-  ADD PRIMARY KEY (`id`),
   ADD KEY `device_id` (`sender_key`,`amount`,`trx_id`),
   ADD KEY `created_date` (`created_date`,`updated_date`),
   ADD KEY `number` (`number`),
@@ -680,7 +659,6 @@ ALTER TABLE `pp_sms_data`
 -- Indexes for table `pp_transaction`
 --
 ALTER TABLE `pp_transaction`
-  ADD PRIMARY KEY (`id`),
   ADD KEY `brand_id` (`brand_id`,`ref`,`trx_id`),
   ADD KEY `payment_method_id` (`gateway_id`,`sender_key`),
   ADD KEY `gateway_slug` (`sender_key`),
@@ -693,7 +671,6 @@ ALTER TABLE `pp_transaction`
 -- Indexes for table `pp_webhook_log`
 --
 ALTER TABLE `pp_webhook_log`
-  ADD PRIMARY KEY (`id`),
   ADD KEY `ref` (`ref`),
   ADD KEY `brand_id` (`brand_id`);
 
