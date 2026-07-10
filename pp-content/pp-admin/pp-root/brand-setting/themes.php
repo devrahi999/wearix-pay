@@ -43,7 +43,7 @@
                     <?php
                         $themes = [];
 
-                        $themeDirs = glob(__DIR__ . '/../../../pp-modules/pp-themes/*', GLOB_ONLYDIR);
+                        $themeDirs = glob(realpath(__DIR__ . '/../../../pp-modules/pp-themes') . '/*', GLOB_ONLYDIR);
 
                         foreach ($themeDirs as $dir) {
 

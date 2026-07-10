@@ -233,7 +233,7 @@
                     <?php
                         $gateways = [];
 
-                        $gatewayDirs = glob(__DIR__ . '/../../../pp-modules/pp-gateways/*', GLOB_ONLYDIR);
+                        $gatewayDirs = glob(realpath(__DIR__ . '/../../../pp-modules/pp-gateways') . '/*', GLOB_ONLYDIR);
 
                         foreach ($gatewayDirs as $dir) {
 

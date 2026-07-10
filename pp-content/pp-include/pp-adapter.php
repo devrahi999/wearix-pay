@@ -254,10 +254,12 @@ aa021689e729dc2302b47e9bdc7d1a9f8b72f95f01530da35bf3b848b188d5b1
 <?php
     }
 
-    if (empty($_SESSION['csrf_token'])) {
-        $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+    if (empty($_COOKIE['csrf_token'])) {
+        $token = bin2hex(random_bytes(32));
+        setcookie('csrf_token', $token, time() + (86400 * 30), "/");
+        $_COOKIE['csrf_token'] = $token;
     }
-    $csrf_token = $_SESSION['csrf_token'];
+    $csrf_token = $_COOKIE['csrf_token'];
 
     $global_user_login = false;
     $global_user_2fa = false;
@@ -409,9 +411,11 @@ aa021689e729dc2302b47e9bdc7d1a9f8b72f95f01530da35bf3b848b188d5b1
             echo json_encode(['status' => "false", 'title' => 'Oops! Something went wrong', 'message' => 'Your request could not be processed. Please try again.']);
         }else{
             if($pp_app_token == ''){
-                if (!isset($_POST['csrf_token']) || !isset($_SESSION['csrf_token']) || !hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
-                    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
-                    $new_csrf_token = $_SESSION['csrf_token'];
+                if (!isset($_POST['csrf_token']) || !isset($_COOKIE['csrf_token']) || !hash_equals($_COOKIE['csrf_token'], $_POST['csrf_token'])) {
+                    $token = bin2hex(random_bytes(32));
+                    setcookie('csrf_token', $token, time() + (86400 * 30), "/");
+                    $_COOKIE['csrf_token'] = $token;
+                    $new_csrf_token = $_COOKIE['csrf_token'];
 
                     echo json_encode(['status' => 'false', 'title' => 'Request Failed', 'message' => 'Invalid request token' , 'csrf_token' => $new_csrf_token]);
                     exit;
@@ -431,8 +435,8 @@ aa021689e729dc2302b47e9bdc7d1a9f8b72f95f01530da35bf3b848b188d5b1
                 }
             }
 
-            //$_SESSION['csrf_token'] = bin2hex(random_bytes(32));
-            $new_csrf_token = $_SESSION['csrf_token'];
+            //$_COOKIE['csrf_token'] = bin2hex(random_bytes(32));
+            $new_csrf_token = $_COOKIE['csrf_token'];
             
             if(isset($_POST['my-two-step-verify-code'])){
                 $auth_code = escape_string($_POST['my-two-step-verify-code'] ?? '');

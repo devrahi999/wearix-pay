@@ -193,7 +193,7 @@
                     <?php
                         $addons = [];
 
-                        $addonDirs = glob(__DIR__ . '/../../../pp-modules/pp-addons/*', GLOB_ONLYDIR);
+                        $addonDirs = glob(realpath(__DIR__ . '/../../../pp-modules/pp-addons') . '/*', GLOB_ONLYDIR);
 
                         foreach ($addonDirs as $dir) {
 
