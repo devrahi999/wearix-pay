@@ -43,9 +43,12 @@
                     <?php
                         $themes = [];
 
-                        $themeDirs = glob(realpath(__DIR__ . '/../../../pp-modules/pp-themes') . '/*', GLOB_ONLYDIR);
-
-                        foreach ($themeDirs as $dir) {
+                        $modulesDir = dirname(__DIR__, 3) . '/pp-modules/pp-themes';
+                        $themeItems = is_dir($modulesDir) ? scandir($modulesDir) : [];
+                        foreach ($themeItems as $slug) {
+                            if ($slug === '.' || $slug === '..') continue;
+                            $dir = $modulesDir . '/' . $slug;
+                            if (!is_dir($dir)) continue;
 
                             if (!file_exists($dir . '/class.php')) {
                                 continue;

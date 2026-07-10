@@ -193,9 +193,12 @@
                     <?php
                         $addons = [];
 
-                        $addonDirs = glob(realpath(__DIR__ . '/../../../pp-modules/pp-addons') . '/*', GLOB_ONLYDIR);
-
-                        foreach ($addonDirs as $dir) {
+                        $modulesDir = dirname(__DIR__, 3) . '/pp-modules/pp-addons';
+                        $addonItems = is_dir($modulesDir) ? scandir($modulesDir) : [];
+                        foreach ($addonItems as $slug) {
+                            if ($slug === '.' || $slug === '..') continue;
+                            $dir = $modulesDir . '/' . $slug;
+                            if (!is_dir($dir)) continue;
 
                             if (!file_exists($dir . '/class.php')) {
                                 continue;

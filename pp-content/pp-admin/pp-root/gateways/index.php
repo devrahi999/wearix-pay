@@ -233,9 +233,12 @@
                     <?php
                         $gateways = [];
 
-                        $gatewayDirs = glob(realpath(__DIR__ . '/../../../pp-modules/pp-gateways') . '/*', GLOB_ONLYDIR);
-
-                        foreach ($gatewayDirs as $dir) {
+                        $modulesDir = dirname(__DIR__, 3) . '/pp-modules/pp-gateways';
+                        $gatewayItems = is_dir($modulesDir) ? scandir($modulesDir) : [];
+                        foreach ($gatewayItems as $slug) {
+                            if ($slug === '.' || $slug === '..') continue;
+                            $dir = $modulesDir . '/' . $slug;
+                            if (!is_dir($dir)) continue;
 
                             if (!file_exists($dir . '/class.php')) {
                                 continue;
