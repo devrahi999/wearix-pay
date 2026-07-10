@@ -1,23 +1,20 @@
 {
   "functions": {
-    "index.php": {
-      "runtime": "vercel-php@0.9.0"
-    },
-    "vercel-install.php": {
+    "api/*.php": {
       "runtime": "vercel-php@0.9.0"
     }
   },
   "routes": [
     {
       "src": "/vercel-install.php",
-      "dest": "/vercel-install.php"
+      "dest": "/api/vercel-install.php"
     },
     {
       "handle": "filesystem"
     },
     {
       "src": "/(.*)",
-      "dest": "/index.php?page=$1"
+      "dest": "/api/index.php?page=$1"
     }
   ]
 }
